@@ -14,24 +14,24 @@
     
     
     
-    <title>node-async | 不积跬步，无以至千里</title>
+    <title>node-error-handle | 不积跬步，无以至千里</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="Node处理响应逻辑管理方式:回调和事件监听    回调处理一次性事件回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么    用事件发射器处理重复性事件事件发射器会触发事件，并且在那些事件被触发时能处理它们。事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：1234567const net = require(&apos;ne">
+    <meta name="description" content="Node错误处理Node在发生错误的时候，有个常规的处理方式。可以创建一个发出error类型事件的事件发射器，这样就可以为这一个事件类型设置一个或多个监听器，从而定义事件响应逻辑;而不是直接抛出错误。如下定义的错误事件被输出到控制台中 1234const events = require(&apos;events&apos;);const myEmitter = new events.EventEmitter();">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node-async">
-<meta property="og:url" content="http://yoursite.com/2018/12/15/node-async/index.html">
+<meta property="og:title" content="node-error-handle">
+<meta property="og:url" content="http://yoursite.com/2018/12/16/node-error-handle/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="Node处理响应逻辑管理方式:回调和事件监听    回调处理一次性事件回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么    用事件发射器处理重复性事件事件发射器会触发事件，并且在那些事件被触发时能处理它们。事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：1234567const net = require(&apos;ne">
+<meta property="og:description" content="Node错误处理Node在发生错误的时候，有个常规的处理方式。可以创建一个发出error类型事件的事件发射器，这样就可以为这一个事件类型设置一个或多个监听器，从而定义事件响应逻辑;而不是直接抛出错误。如下定义的错误事件被输出到控制台中 1234const events = require(&apos;events&apos;);const myEmitter = new events.EventEmitter();">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-15T16:28:29.398Z">
+<meta property="og:updated_time" content="2018-12-16T04:29:24.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node-async">
-<meta name="twitter:description" content="Node处理响应逻辑管理方式:回调和事件监听    回调处理一次性事件回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么    用事件发射器处理重复性事件事件发射器会触发事件，并且在那些事件被触发时能处理它们。事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：1234567const net = require(&apos;ne">
+<meta name="twitter:title" content="node-error-handle">
+<meta name="twitter:description" content="Node错误处理Node在发生错误的时候，有个常规的处理方式。可以创建一个发出error类型事件的事件发射器，这样就可以为这一个事件类型设置一个或多个监听器，从而定义事件响应逻辑;而不是直接抛出错误。如下定义的错误事件被输出到控制台中 1234const events = require(&apos;events&apos;);const myEmitter = new events.EventEmitter();">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -124,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">node-async</div>
+        <div class="flex-col header-title ellipsis">node-error-handle</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -146,11 +146,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">node-async</h1>
+        <h1 class="title">node-error-handle</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-15T06:41:28.000Z" itemprop="datePublished" class="page-time">
-  2018-12-15
+                <time datetime="2018-12-16T04:09:21.000Z" itemprop="datePublished" class="page-time">
+  2018-12-16
 </time>
 
 
@@ -167,12 +167,12 @@
 <div class="container body-wrap">
     
 
-<article id="post-node-async" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-node-error-handle" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">node-async</h1>
+        <h1 class="post-card-title">node-error-handle</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-15 14:41:28" datetime="2018-12-15T06:41:28.000Z" itemprop="datePublished">2018-12-15</time>
+            <time class="post-time" title="2018-12-16 12:09:21" datetime="2018-12-16T04:09:21.000Z" itemprop="datePublished">2018-12-16</time>
 
             
 
@@ -186,37 +186,10 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <ul>
-<li>Node处理响应逻辑管理方式:<br>回调和事件监听</li>
-</ul>
-<hr>
-<ul>
-<li>回调处理一次性事件<br>回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么</li>
-</ul>
-<hr>
-<ul>
-<li>用事件发射器处理重复性事件<br>事件发射器会触发事件，并且在那些事件被触发时能处理它们。<br>事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function"><span class="params">socket</span> =&gt;</span> &#123;</span><br><span class="line">  socket.on(<span class="string">'data'</span>, data =&gt; &#123; <span class="comment">// 处理重复发生的事件</span></span><br><span class="line">    socket.write(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>响应只发生一次的事件<br>响应只有一次采用的方法是使用once方法，如下所示:<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function"><span class="params">socket</span> =&gt;</span> &#123;</span><br><span class="line">  socket.once(<span class="string">'data'</span>, data =&gt; &#123; <span class="comment">// 只是对事件产生一次响应,第一次响应之后便不在响应之后的请求</span></span><br><span class="line">    socket.write(data);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(<span class="number">8888</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>创建事件发射器: 实现一个Pub/Sub的例子<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'event'</span>).EventEmitter;</span><br><span class="line"><span class="keyword">const</span> channel = <span class="keyword">new</span> EventEmitter(); <span class="comment">// 实例化一个事件发射器对象</span></span><br><span class="line">channel.on(<span class="string">'join'</span>, () =&gt; <span class="built_in">console</span>.log(<span class="string">'welcom'</span>)); <span class="comment">// Sub(订阅)join事件,以及join事件被触发时的回调处理函数</span></span><br><span class="line">channel.emit(<span class="string">'join'</span>); <span class="comment">// Pub(发布/触发)join事件</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li>异步编程<br>js中的异步编程方式有如下几种：<ol>
-<li>回调函数</li>
-<li>事件监听</li>
-<li>发布/订阅</li>
-<li>Promise</li>
-<li>Async/Await<br>参考资料:<a href="http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html" target="_blank" rel="noopener">javascript异步编程的方式</a></li>
-</ol>
-</li>
+<li><p>Node错误处理<br>Node在发生错误的时候，有个常规的处理方式。可以创建一个发出error类型事件的事件发射器，这样就可以为这一个事件类型设置一个或多个监听器，从而定义事件响应逻辑;而不是直接抛出错误。如下定义的错误事件被输出到控制台中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> events.EventEmitter();</span><br><span class="line">myEmitter.on(<span class="string">'error'</span>, err =&gt; <span class="built_in">console</span>.log(<span class="string">`ERROR: <span class="subst">$&#123;err.message&#125;</span>`</span>));</span><br><span class="line">myEmitter.emit(<span class="string">'error'</span>, <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'something is wrong.'</span>));</span><br></pre></td></tr></table></figure>
+<p>如果该事件类型被发出时没有处理该错误的事件监听器，事件发射器会输出一个堆栈跟踪并且停止执行。堆栈跟踪会用emit调用的第二个参数指明错误类型；如果发出的error类型事件没有第二个参数作为指定的错误类型，堆栈跟踪会指出一个‘未捕获，未指明的错误类型事件’，并且程序会停止执行。此时可以使用以下代码定义一个全局的未捕获的错误类型事件处理器:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">process.on(<span class="string">'uncaughtException'</span>, err =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err.stack);</span><br><span class="line">  process.exit(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
         </div>
@@ -226,7 +199,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-15T16:28:29.398Z" itemprop="dateUpdated">2018-12-16 00:28:29</time>
+    Last updated: <time datetime="2018-12-16T04:29:24.009Z" itemprop="dateUpdated">2018-12-16 12:29:24</time>
 </span><br>
 
 
@@ -258,7 +231,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/15/node-async/&title=《node-async》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/16/node-error-handle/&title=《node-error-handle》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -268,22 +241,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/15/node-async/&title=《node-async》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/16/node-error-handle/&title=《node-error-handle》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/15/node-async/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/16/node-error-handle/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-async》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/15/node-async/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-error-handle》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/16/node-error-handle/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/15/node-async/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/16/node-error-handle/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -303,21 +276,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/12/16/node-error-handle/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">node-error-handle</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/15/node-module/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/15/node-async/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">node-module</h4>
+        <h4 class="title">node-async</h4>
       </a>
     </div>
   
@@ -411,7 +377,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/15/node-async/&title=《node-async》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/16/node-error-handle/&title=《node-error-handle》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -421,22 +387,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/15/node-async/&title=《node-async》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/16/node-error-handle/&title=《node-error-handle》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/15/node-async/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/16/node-error-handle/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-async》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/15/node-async/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-error-handle》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/16/node-error-handle/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/15/node-async/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/16/node-error-handle/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -447,7 +413,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/15/node-async/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/16/node-error-handle/" alt="微信分享二维码">
 </div>
 
 

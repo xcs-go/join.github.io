@@ -160,6 +160,46 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-node-error-handle" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-16 12:09:21" datetime="2018-12-16T04:09:21.000Z" itemprop="datePublished">2018-12-16</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/16/node-error-handle/">node-error-handle</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+Node错误处理Node在发生错误的时候，有个常规的处理方式。可以创建一个发出error类型事件的事件发射器，这样就可以为这一个事件类型设置一个或多个监听器，从而定义事件响应逻辑;而不是直接抛出错误。如下定义的错误事件被输出到控制台中
+1234const events = require('events');const myEmitter = new events.EventEmitter...
+    
+
+        <a href="/2018/12/16/node-error-handle/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-node-async" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -186,20 +226,19 @@
 
     
         
-异步编程js中的异步编程方式有如下几种：
-回调函数
-事件监听
-发布/订阅
-Promise
-Async/Await参考资料:javascript异步编程的方式
+Node处理响应逻辑管理方式:回调和事件监听
 
 
 
+回调处理一次性事件回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么
 
+
+
+用事件发射器处理重复性事件事件发射器会触发事件，并且在那些事件被触发时能处理它们。事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：1234567const net = require(...
     
 
         <a href="/2018/12/15/node-async/" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文
         </a>
     </div>
     
@@ -242,7 +281,7 @@ exports和require的关系Node模块允许你从被引入文件中选择要暴�
     
 
         <a href="/2018/12/15/node-module/" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文
         </a>
     </div>
     
@@ -276,12 +315,18 @@ exports和require的关系Node模块允许你从被引入文件中选择要暴�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        hode.js http测试 测试hexo是否可用
+        
+Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require('http');
 
+
+
+
+创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。
+123http.cr...
     
 
         <a href="/2018/12/15/node-http/" class="post-more waves-effect waves-button">
-            Continue reading...
+            阅读全文
         </a>
     </div>
     

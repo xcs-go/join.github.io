@@ -21,17 +21,19 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="hode.js http测试 测试hexo是否可用">
+    <meta name="description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node-http">
 <meta property="og:url" content="http://yoursite.com/2018/12/15/node-http/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="hode.js http测试 测试hexo是否可用">
+<meta property="og:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-15T03:10:58.417Z">
+<meta property="og:image" content="http://yoursite.com/images/1544939125484.jpg">
+<meta property="og:updated_time" content="2018-12-16T05:46:20.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node-http">
-<meta name="twitter:description" content="hode.js http测试 测试hexo是否可用">
+<meta name="twitter:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
+<meta name="twitter:image" content="http://yoursite.com/images/1544939125484.jpg">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -185,7 +187,18 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>hode.js http测试 测试hexo是否可用</p>
+            <ul>
+<li>Node-http请求<br>Node提供了http模块用于提供http请求和客户端接口<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>创建一个基本的http服务器<br>创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 处理请求逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>服务器每收到一条http请求，都会使用新的req和res对象触发请求回调函数。在触发回调函数之前,Node会解析请求的HTTP头，并将它们作为req对象的一部分提供给请求回调。但是Node不会在回调函数被出发前开始对请求体进行解析。</p>
+</li>
+<li>结束请求响应<br>Node并不会自动的往客户端写入响应，因此在请求回调函数调用完成之后就应该手动的调用res.end()方法结束响应。如果没有结束响应，那么请求将会挂起，直到客户端超时，或者它会一直处于打开状态。如下图的生命周期图例所示:<br><img src="/images/1544939125484.jpg" alt=""></li>
+</ul>
 
         </div>
 
@@ -194,7 +207,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-15T03:10:58.417Z" itemprop="dateUpdated">2018-12-15 11:10:58</time>
+    Last updated: <time datetime="2018-12-16T05:46:20.553Z" itemprop="dateUpdated">2018-12-16 13:46:20</time>
 </span><br>
 
 
