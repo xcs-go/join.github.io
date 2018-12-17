@@ -29,7 +29,7 @@
 <meta property="og:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/1544939125484.jpg">
-<meta property="og:updated_time" content="2018-12-16T05:46:20.553Z">
+<meta property="og:updated_time" content="2018-12-16T11:38:19.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node-http">
 <meta name="twitter:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
@@ -132,7 +132,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -199,6 +199,15 @@
 </li>
 <li>结束请求响应<br>Node并不会自动的往客户端写入响应，因此在请求回调函数调用完成之后就应该手动的调用res.end()方法结束响应。如果没有结束响应，那么请求将会挂起，直到客户端超时，或者它会一直处于打开状态。如下图的生命周期图例所示:<br><img src="/images/1544939125484.jpg" alt=""></li>
 </ul>
+<hr>
+<ul>
+<li>Node读取请求头和设定响应头<br>Node提供了几个修改Http响应头的方法：<ol>
+<li>res.setHeader(field, value);</li>
+<li>res.getHeader(field);</li>
+<li>res.removeHeader(field);</li>
+</ol>
+</li>
+</ul>
 
         </div>
 
@@ -207,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-16T05:46:20.553Z" itemprop="dateUpdated">2018-12-16 13:46:20</time>
+    最終更新：<time datetime="2018-12-16T11:38:19.750Z" itemprop="dateUpdated">2018-12-16 19:38:19</time>
 </span><br>
 
 
@@ -363,7 +372,7 @@
 
         <p>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
