@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,6 +158,134 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-base-type-ts" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-25 21:02:44" datetime="2018-12-25T13:02:44.000Z" itemprop="datePublished">2018-12-25</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/25/base-type-ts/">base-type-ts</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+Basic type
+
+Boolean
+1let isDone: boolean = true
+
+Number在typescript中，所有的数字都是浮点类型
+1234let a: number = 10let b: number = 3.14let c: number = 0xf00dlet d: number = 0o744
+
+String和js一样，在typescript中，字符串同...
+    
+
+        <a href="/2018/12/25/base-type-ts/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-typescript01" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-25 17:05:19" datetime="2018-12-25T09:05:19.000Z" itemprop="datePublished">2018-12-25</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/25/typescript01/">typescript01</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        — 类型注释(Type annotations)  类型注释是一个轻便的方式去记录函数或者变量希望得到的类型  12345function hello(person: string)&#123;  return 'hello' + person&#125;let user = 'Jane User' // 传递字符串类型console.log(hello(user)) // hello Ja...
+    
+
+        <a href="/2018/12/25/typescript01/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-connect" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-19 22:16:25" datetime="2018-12-19T14:16:25.000Z" itemprop="datePublished">2018-12-19</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/19/connect/">connect</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+connectconnect是一个框架，它使用被称为中间件的模块化组件，以可重用的方式实现Web程序中的逻辑。在connect中，中间件组件是一个函数，它拦截HTTP服务器提供的请求和响应对象，执行逻辑，然后结束响应或者传递给下一个中间件组件。connect用派分器把中间件“连接”在一起.如下图所示:
+
+
+
+connect工作机制在connect中，中间件组件是一个Javascript函数...
+    
+
+        <a href="/2018/12/19/connect/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-node-save-data" class="article-card article-type-post" itemprop="blogPost">
@@ -204,7 +332,7 @@ Node中常用的存储数据的方式
     
 
         <a href="/2018/12/17/node-save-data/" class="post-more waves-effect waves-button">
-            続きを読む…
+            阅读全文
         </a>
     </div>
     
@@ -244,7 +372,7 @@ Node错误处理Node在发生错误的时候，有个常规的处理方式。可
     
 
         <a href="/2018/12/16/node-error-handle/" class="post-more waves-effect waves-button">
-            続きを読む…
+            阅读全文
         </a>
     </div>
     
@@ -291,7 +419,7 @@ Node处理响应逻辑管理方式:回调和事件监听
     
 
         <a href="/2018/12/15/node-async/" class="post-more waves-effect waves-button">
-            続きを読む…
+            阅读全文
         </a>
     </div>
     
@@ -334,7 +462,7 @@ exports和require的关系Node模块允许你从被引入文件中选择要暴�
     
 
         <a href="/2018/12/15/node-module/" class="post-more waves-effect waves-button">
-            続きを読む…
+            阅读全文
         </a>
     </div>
     
@@ -379,7 +507,7 @@ Node-http请求Node提供了http模块用于提供http请求和客户端接口1c
     
 
         <a href="/2018/12/15/node-http/" class="post-more waves-effect waves-button">
-            続きを読む…
+            阅读全文
         </a>
     </div>
     
@@ -408,7 +536,7 @@ Node-http请求Node提供了http模块用于提供http请求和客户端接口1c
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
