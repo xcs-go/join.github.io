@@ -160,6 +160,94 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-singleton-pattern" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-29 11:00:37" datetime="2018-12-29T03:00:37.000Z" itemprop="datePublished">2018-12-29</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/29/singleton-pattern/">单例模式</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+使用场景单例模式的优点主要体现在节省内存，始终只使用一个实例，所用到的场景也往往是，虽然实例可能会被多次使用，但每次使用都是独立发生的，而不是同时进行的。
+个人简单理解
+
+单例模式就是创建一个唯一的类的实例。如果该实例没有被创建，创建该实例；否则返回已经被创建的实例。
+
+
+根据上面的理解，创建一个简单的单例模式
+123456789101112131415161718192021222324...
+    
+
+        <a href="/2018/12/29/singleton-pattern/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-hoc" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-12-26 23:22:48" datetime="2018-12-26T15:22:48.000Z" itemprop="datePublished">2018-12-26</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/12/26/hoc/">高阶组件</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+高阶组件(HOC)高阶组件公式
+1const HOC = Component =&gt; EnhancedComponent
+从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。一个简单的高阶组件的例子如下，给组件添加一个className prop
+123const withClassName = Component =&gt; props =&gt;(  ...
+    
+
+        <a href="/2018/12/26/hoc/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-event-loop" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -175,7 +263,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/26/event-loop/">event-loop</a>
+      <a class="post-title-link" href="/2018/12/26/event-loop/">事件循环</a>
     </h3>
   
 
@@ -509,54 +597,15 @@ exports和require的关系Node模块允许你从被引入文件中选择要暴�
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-node-http" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-15 11:05:32" datetime="2018-12-15T03:05:32.000Z" itemprop="datePublished">2018-12-15</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/15/node-http/">node-http</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require('http');
-
-
-
-
-创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。
-123http.cr...
-    
-
-        <a href="/2018/12/15/node-http/" class="post-more waves-effect waves-button">
-            阅读全文
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
 
 </div>
 

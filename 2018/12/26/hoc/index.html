@@ -14,27 +14,24 @@
     
     
     
-    <title>事件循环 | 不积跬步，无以至千里</title>
+    <title>高阶组件 | 不积跬步，无以至千里</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="事件轮询(event loop) js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以随着时间的推移执行程序中的多个代码块,这个就称为事件轮询js引擎对时间没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件(js代码的执行)“">
+    <meta name="description" content="高阶组件(HOC)高阶组件公式 1const HOC = Component =&amp;gt; EnhancedComponent 从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。一个简单的高阶组件的例子如下，给组件添加一个className prop 123const withClassName = Component =&amp;gt; props =&amp;gt;(  &amp;lt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事件循环">
-<meta property="og:url" content="http://yoursite.com/2018/12/26/event-loop/index.html">
+<meta property="og:title" content="高阶组件">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/hoc/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="事件轮询(event loop) js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以随着时间的推移执行程序中的多个代码块,这个就称为事件轮询js引擎对时间没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件(js代码的执行)“">
+<meta property="og:description" content="高阶组件(HOC)高阶组件公式 1const HOC = Component =&amp;gt; EnhancedComponent 从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。一个简单的高阶组件的例子如下，给组件添加一个className prop 123const withClassName = Component =&amp;gt; props =&amp;gt;(  &amp;lt">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/9BDAA230-067C-4B39-9A76-9EDB33B9BCE4.png">
-<meta property="og:image" content="http://yoursite.com/images/07387385-E157-43F3-B31A-0C4EE7543FB5.png">
-<meta property="og:updated_time" content="2018-12-26T15:25:09.403Z">
+<meta property="og:updated_time" content="2018-12-26T15:46:04.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事件循环">
-<meta name="twitter:description" content="事件轮询(event loop) js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以随着时间的推移执行程序中的多个代码块,这个就称为事件轮询js引擎对时间没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件(js代码的执行)“">
-<meta name="twitter:image" content="http://yoursite.com/images/9BDAA230-067C-4B39-9A76-9EDB33B9BCE4.png">
+<meta name="twitter:title" content="高阶组件">
+<meta name="twitter:description" content="高阶组件(HOC)高阶组件公式 1const HOC = Component =&amp;gt; EnhancedComponent 从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。一个简单的高阶组件的例子如下，给组件添加一个className prop 123const withClassName = Component =&amp;gt; props =&amp;gt;(  &amp;lt">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -127,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">事件循环</div>
+        <div class="flex-col header-title ellipsis">高阶组件</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -149,10 +146,10 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">事件循环</h1>
+        <h1 class="title">高阶组件</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-26T02:08:59.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-12-26T15:22:48.000Z" itemprop="datePublished" class="page-time">
   2018-12-26
 </time>
 
@@ -169,20 +166,13 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#事件轮询-event-loop"><span class="post-toc-number">1.</span> <span class="post-toc-text">事件轮询(event loop)</span></a></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-event-loop" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-hoc" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">事件循环</h1>
+        <h1 class="post-card-title">高阶组件</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-26 10:08:59" datetime="2018-12-26T02:08:59.000Z" itemprop="datePublished">2018-12-26</time>
+            <time class="post-time" title="2018-12-26 23:22:48" datetime="2018-12-26T15:22:48.000Z" itemprop="datePublished">2018-12-26</time>
 
             
 
@@ -195,24 +185,15 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="事件轮询-event-loop"><a href="#事件轮询-event-loop" class="headerlink" title="事件轮询(event loop)"></a>事件轮询(event loop)</h1><blockquote>
-<p>js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。<br>js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以<code>随着时间的推移</code>执行程序中的多个代码块,这个就称为<strong>事件轮询</strong><br>js引擎对<code>时间</code>没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件<code>(js代码的执行)</code>“</p>
-</blockquote>
-<ul>
-<li><p>单线程<br>前面提到了javascript线程。下面简单理解一下js的单线程<br>js语言的一大特点就是单线程，也就是说同一时间只能处理一件事情。这个是和JavaScript的作用有关系的。JavaScript的主要用途是用来和用户进行交互，操作DOM。例如某个操作是删除一个DOM节点，同时另一个操作是在这个DOM上添加内容，这个时候浏览器就不知道该执行哪个操作。所以这个决定了js只能是单线程的语言，同一个时间只能处理一件事情。</p>
-</li>
-<li><p>理解事件轮询</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件轮询类似一个队列的数组，先进先出</span></span><br><span class="line"><span class="keyword">const</span> eventLoop = []</span><br><span class="line"><span class="keyword">let</span> event</span><br><span class="line"><span class="comment">// 永远执行</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// 执行一个tick</span></span><br><span class="line">  <span class="keyword">if</span> (eventLoop.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 从队列中取出下一个事件</span></span><br><span class="line">    event = eventLoop.shift()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行取出的事件</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      event()</span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="built_in">Error</span>(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如上所示，事件轮询就像一个一直在执行的while循环，不断的去查询eventLoop中是否还有事件存在没有被执行<code>(每一次轮询迭代称为一个tick)</code>，如果队列中存在还没有被执行的事件，那么该事件就会被取出执行。这些事件就是回调函数。</p>
+            <ul>
+<li><p>高阶组件(HOC)<br>高阶组件公式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HOC = <span class="function"><span class="params">Component</span> =&gt;</span> EnhancedComponent</span><br></pre></td></tr></table></figure>
+<p>从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。<br>一个简单的高阶组件的例子如下，给组件添加一个className prop</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> withClassName = <span class="function"><span class="params">Component</span> =&gt;</span> props =&gt;(</span><br><span class="line">  &lt;Component &#123;...props&#125; className=<span class="string">"my-class"</span> /&gt;</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<p>从上面的例子我们可以看到withClassName这个高阶组件，接收一个Component组件作为函数的参数，并且返回一个函数，返回的函数接收一个props数据流作为参数，并且该函数返回一个被增强的<code>&lt;Component/&gt;</code>组件。</p>
 <blockquote>
-<p><strong> 注意⚠️</strong><br>setTimeout函数并不会立刻将回调函数放入到事件轮询队列中，它设置了一个定时器，当达到定时器指定的时间的时候，setTimeout指定的回调函数才会被放入轮询队列,在未来的tick中被取出执行。如果该回调函数被放入队列中时队列还有很多等待被执行的回调函数，那么setTimeout回调函数便不会按照指定的时间执行，会晚于指定的事件执行。</p>
+<p>高阶组件通常将组件上接收到的props对象展开，这样做的原因是尽量让它们更直观，并且只添加新的行为。</p>
 </blockquote>
-</li>
-<li><p>javascript中的线程和任务<br>由于js是单线程的，所以一个线程中，事件循环是唯一的。但是却可以有多个任务队列<br>任务可以分为以下两种:</p>
-<ol>
-<li>一种是同步任务:同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，后一个任务才执行(先进先出)见下图。<br><img src="/images/9BDAA230-067C-4B39-9A76-9EDB33B9BCE4.png" alt=""></li>
-<li>一种是异步任务:异步任务指的是，不进入主线程，而是进入任务队列(task queue)的任务，只有任务队列<code>通知主线程</code>，某个异步任务可以进入主线程执行了，该异步任务才会从任务队列移到主线程中等待被执行。如下图。<br><img src="/images/07387385-E157-43F3-B31A-0C4EE7543FB5.png" alt=""></li>
-</ol>
 </li>
 </ul>
 
@@ -223,7 +204,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-26T15:25:09.403Z" itemprop="dateUpdated">2018-12-26 23:25:09</time>
+    Last updated: <time datetime="2018-12-26T15:46:04.041Z" itemprop="dateUpdated">2018-12-26 23:46:04</time>
 </span><br>
 
 
@@ -255,7 +236,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/26/event-loop/&title=《事件循环》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/26/hoc/&title=《高阶组件》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -265,22 +246,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/26/event-loop/&title=《事件循环》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/26/hoc/&title=《高阶组件》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/26/event-loop/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/26/hoc/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《事件循环》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/26/event-loop/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高阶组件》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/26/hoc/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/26/event-loop/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/26/hoc/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -303,18 +284,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/26/hoc/" id="post-prev" class="post-nav-link">
+      <a href="/2018/12/29/singleton-pattern/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">高阶组件</h4>
+        <h4 class="title">单例模式</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/25/base-type-ts/" id="post-next" class="post-nav-link">
+      <a href="/2018/12/26/event-loop/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">base-type-ts</h4>
+        <h4 class="title">事件循环</h4>
       </a>
     </div>
   
@@ -408,7 +389,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/26/event-loop/&title=《事件循环》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/26/hoc/&title=《高阶组件》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -418,22 +399,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/26/event-loop/&title=《事件循环》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/26/hoc/&title=《高阶组件》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/26/event-loop/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/26/hoc/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《事件循环》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/26/event-loop/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高阶组件》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/26/hoc/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/26/event-loop/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/26/hoc/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -444,7 +425,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/26/event-loop/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/26/hoc/" alt="微信分享二维码">
 </div>
 
 
