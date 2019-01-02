@@ -14,26 +14,24 @@
     
     
     
-    <title>node-http | 不积跬步，无以至千里</title>
+    <title>观察着模式 | 不积跬步，无以至千里</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
+    <meta name="description" content="观察者模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node-http">
-<meta property="og:url" content="http://yoursite.com/2018/12/15/node-http/index.html">
+<meta property="og:title" content="观察着模式">
+<meta property="og:url" content="http://yoursite.com/2018/12/29/observer-pattern/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
+<meta property="og:description" content="观察者模式">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/1544939125484.jpg">
-<meta property="og:updated_time" content="2018-12-16T11:38:19.750Z">
+<meta property="og:updated_time" content="2018-12-29T06:56:52.173Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node-http">
-<meta name="twitter:description" content="Node-http请求Node提供了http模块用于提供http请求和客户端接口1const http = require(&apos;http&apos;);     创建一个基本的http服务器创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。 123http.creat">
-<meta name="twitter:image" content="http://yoursite.com/images/1544939125484.jpg">
+<meta name="twitter:title" content="观察着模式">
+<meta name="twitter:description" content="观察者模式">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -126,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">node-http</div>
+        <div class="flex-col header-title ellipsis">观察着模式</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,11 +146,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">node-http</h1>
+        <h1 class="title">观察着模式</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-15T03:05:32.000Z" itemprop="datePublished" class="page-time">
-  2018-12-15
+                <time datetime="2018-12-29T06:46:15.000Z" itemprop="datePublished" class="page-time">
+  2018-12-29
 </time>
 
 
@@ -169,12 +167,12 @@
 <div class="container body-wrap">
     
 
-<article id="post-node-http" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-observer-pattern" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">node-http</h1>
+        <h1 class="post-card-title">观察着模式</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-15 11:05:32" datetime="2018-12-15T03:05:32.000Z" itemprop="datePublished">2018-12-15</time>
+            <time class="post-time" title="2018-12-29 14:46:15" datetime="2018-12-29T06:46:15.000Z" itemprop="datePublished">2018-12-29</time>
 
             
 
@@ -188,25 +186,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <ul>
-<li>Node-http请求<br>Node提供了http模块用于提供http请求和客户端接口<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>创建一个基本的http服务器<br>创建一个Node服务器需要调用http.createServer()函数；该函数接收一个回调函数作为参数,该回调函数接收两个参数:req和res。服务器每次接收到新的请求时都会调用该回调函数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 处理请求逻辑</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>服务器每收到一条http请求，都会使用新的req和res对象触发请求回调函数。在触发回调函数之前,Node会解析请求的HTTP头，并将它们作为req对象的一部分提供给请求回调。但是Node不会在回调函数被出发前开始对请求体进行解析。</p>
-</li>
-<li>结束请求响应<br>Node并不会自动的往客户端写入响应，因此在请求回调函数调用完成之后就应该手动的调用res.end()方法结束响应。如果没有结束响应，那么请求将会挂起，直到客户端超时，或者它会一直处于打开状态。如下图的生命周期图例所示:<br><img src="/images/1544939125484.jpg" alt=""></li>
-</ul>
-<hr>
-<ul>
-<li>Node读取请求头和设定响应头<br>Node提供了几个修改Http响应头的方法：<ol>
-<li>res.setHeader(field, value);</li>
-<li>res.getHeader(field);</li>
-<li>res.removeHeader(field);</li>
-</ol>
-</li>
+<li>观察者模式</li>
 </ul>
 
         </div>
@@ -216,7 +196,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-16T11:38:19.750Z" itemprop="dateUpdated">2018-12-16 19:38:19</time>
+    Last updated: <time datetime="2018-12-29T06:56:52.173Z" itemprop="dateUpdated">2018-12-29 14:56:52</time>
 </span><br>
 
 
@@ -248,7 +228,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/15/node-http/&title=《node-http》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/29/observer-pattern/&title=《观察着模式》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -258,22 +238,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/15/node-http/&title=《node-http》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/29/observer-pattern/&title=《观察着模式》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/15/node-http/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/29/observer-pattern/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-http》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/15/node-http/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《观察着模式》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/29/observer-pattern/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/15/node-http/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/29/observer-pattern/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -296,13 +276,20 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/15/node-module/" id="post-prev" class="post-nav-link">
+      <a href="/2019/01/02/isEmptyObject/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">node-module</h4>
+        <h4 class="title">判断一个对象是否是空对象</h4>
       </a>
     </div>
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/29/singleton-pattern/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">单例模式</h4>
+      </a>
+    </div>
   
 </nav>
 
@@ -394,7 +381,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/15/node-http/&title=《node-http》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/29/observer-pattern/&title=《观察着模式》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -404,22 +391,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/15/node-http/&title=《node-http》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/29/observer-pattern/&title=《观察着模式》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/15/node-http/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/29/observer-pattern/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-http》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/15/node-http/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《观察着模式》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/29/observer-pattern/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/15/node-http/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/29/observer-pattern/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -430,7 +417,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/15/node-http/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/29/observer-pattern/" alt="微信分享二维码">
 </div>
 
 
