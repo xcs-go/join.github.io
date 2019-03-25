@@ -14,24 +14,28 @@
     
     
     
-    <title>node-save-data | 不积跬步，无以至千里</title>
+    <title>调用堆栈 | 不积跬步，无以至千里</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+    <meta name="description" content="调用栈调用栈是一种栈结构(后进先出),在js代码运行的时候会形成一个栈。此后会将全局上下文，函数上下文等等push进入这个栈中，当函数执行完成之后会被pop出该栈.浏览器的调用栈有一个最大的数量，如果超出这个数量的话就会跑出错误. 123456function callStack()&amp;#123;  console.log(&apos;callStack&apos;)  callStack()&amp;#125;callSt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node-save-data">
-<meta property="og:url" content="http://yoursite.com/2018/12/17/node-save-data/index.html">
+<meta property="og:title" content="调用堆栈">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/call-stack/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+<meta property="og:description" content="调用栈调用栈是一种栈结构(后进先出),在js代码运行的时候会形成一个栈。此后会将全局上下文，函数上下文等等push进入这个栈中，当函数执行完成之后会被pop出该栈.浏览器的调用栈有一个最大的数量，如果超出这个数量的话就会跑出错误. 123456function callStack()&amp;#123;  console.log(&apos;callStack&apos;)  callStack()&amp;#125;callSt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-18T15:23:17.419Z">
+<meta property="og:image" content="http://yoursite.com/images/WechatIMG342.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/WechatIMG343.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/1552030929563.jpg">
+<meta property="og:updated_time" content="2019-03-08T08:31:41.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node-save-data">
-<meta name="twitter:description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+<meta name="twitter:title" content="调用堆栈">
+<meta name="twitter:description" content="调用栈调用栈是一种栈结构(后进先出),在js代码运行的时候会形成一个栈。此后会将全局上下文，函数上下文等等push进入这个栈中，当函数执行完成之后会被pop出该栈.浏览器的调用栈有一个最大的数量，如果超出这个数量的话就会跑出错误. 123456function callStack()&amp;#123;  console.log(&apos;callStack&apos;)  callStack()&amp;#125;callSt">
+<meta name="twitter:image" content="http://yoursite.com/images/WechatIMG342.jpeg">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -124,7 +128,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">node-save-data</div>
+        <div class="flex-col header-title ellipsis">调用堆栈</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -146,11 +150,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">node-save-data</h1>
+        <h1 class="title">调用堆栈</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-17T15:59:47.000Z" itemprop="datePublished" class="page-time">
-  2018-12-17
+                <time datetime="2019-03-08T06:38:42.000Z" itemprop="datePublished" class="page-time">
+  2019-03-08
 </time>
 
 
@@ -167,12 +171,12 @@
 <div class="container body-wrap">
     
 
-<article id="post-node-save-data" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-call-stack" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">node-save-data</h1>
+        <h1 class="post-card-title">调用堆栈</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-17 23:59:47" datetime="2018-12-17T15:59:47.000Z" itemprop="datePublished">2018-12-17</time>
+            <time class="post-time" title="2019-03-08 14:38:42" datetime="2019-03-08T06:38:42.000Z" itemprop="datePublished">2019-03-08</time>
 
             
 
@@ -186,29 +190,28 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <ul>
-<li>Node存储数据<br>如何选择存储机制<ol>
-<li>程序需要存储的数据是什么</li>
-<li>如何保证性能,数据的读写速度</li>
-<li>数据量</li>
-<li>如何查询数据</li>
-<li>数据存储时间</li>
+<li><p>调用栈<br>调用栈是一种栈结构(后进先出),在js代码运行的时候会形成一个栈。此后会将全局上下文，函数上下文等等push进入这个栈中，当函数执行完成之后会被pop出该栈.浏览器的调用栈有一个最大的数量，如果超出这个数量的话就会跑出错误.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callStack</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'callStack'</span>)</span><br><span class="line">  callStack()</span><br><span class="line">&#125;</span><br><span class="line">callStack()</span><br><span class="line"><span class="comment">// Uncaught RangeError: Maximum call stack size exceeded</span></span><br></pre></td></tr></table></figure>
+<p>以上的递归执行就会超出浏览器的调用栈的最大值,导致当前页面卡死,从而抛出错误.</p>
+</li>
+<li><p>栈数据结构<br>栈数据结构是先进后出。类似于我们在桌子上面摆放的书籍，放在最上面的会先被使用，放到最下面的会被等到上面的都被使用之后才会被使用(不考虑从中间抽取)。其结构如下：<br><img src="/images/WechatIMG342.jpeg" alt=""></p>
+</li>
+<li><p>堆数据结构<br>堆数据结构是一种树状结构，是一种无序的。例如JSON格式中的数据，我们存储的key-value可以是无序的。我们只需要知道key值就可以取出value。而不用关心实际的顺序是怎么样的(思考复合数据类型)。</p>
+</li>
+<li><p>队列结构<br>队列是一种先进先出的数据结构。先进的会先得到服务，后进的后面才能得到服务。就像我们排队一样。其机构如下：<br><img src="/images/WechatIMG343.jpeg" alt=""></p>
+</li>
+<li><p>变量的存放<br>数据是存放在内存中(包含栈、堆、池(也称为常量池存放常量))的，而内存中只存在栈和堆，那么我们声明的变量是存放在堆中还是栈中呢分为两种情况，</p>
+<ol>
+<li>基本数据类型(undefined,null,boolean,number,string,symbol)：基本数据类型是将数据直接存储在栈中，因为这些类型在内存中分别占有固定大小的空间，是直接按值类访问的。</li>
+<li>引用类型(object)：保存在堆中，因为这种值的大小不固定，因此不能把它直接放入到栈内存中，但是但是内存地址大小是固定的，因此保存在堆内存中，在栈内存中存放的只是该对象的访问地址。当查询引用类型的变量的时候，先从栈内存中读取到引用类型的内存地址，然后再通过地址栈找到堆中的值。因此这种方式访问叫做按引用访问。<br><img src="/images/1552030929563.jpg" alt=""></li>
 </ol>
 </li>
-</ul>
-<hr>
-<ul>
-<li>Node中常用的存储数据的方式<ul>
-<li>无服务器的数据存储<ol>
-<li>内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失.</li>
-<li>基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.</li>
+<li><p>内存空间管理<br>js的内存生命周期如下：</p>
+<ol>
+<li>分配你所需要的内存</li>
+<li>使用分配到的内存（读，写）</li>
+<li>在不需要时将其释放、归还<br>js拥有自动垃圾收集机制，最常用的是通过<code>标记清除</code>的算法来找到哪些对象是不再继续使用的，使用a=null其实仅仅只是做了一个释放引用的操作，让a原本对应的值失去引用。脱离执行环境，这个值会在下一次垃圾收集器执行操作的时候被找到并释放。<br>在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要了，因此垃圾收集器很容易做出判断并回收，但是全局什么时候释放内存空间则是很难判断，这也是为什么我们需要尽量少的使用全局变量的原因。</li>
 </ol>
-</li>
-<li>关系型数据库<br>关系型数据库可以存储复杂的信息，并且查询起来比较容易<ol>
-<li>mySql</li>
-<li>PostgreSQl</li>
-</ol>
-</li>
-</ul>
 </li>
 </ul>
 
@@ -219,7 +222,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-18T15:23:17.419Z" itemprop="dateUpdated">2018-12-18 23:23:17</time>
+    最后更新时间：<time datetime="2019-03-08T08:31:41.553Z" itemprop="dateUpdated">2019-03-08 16:31:41</time>
 </span><br>
 
 
@@ -251,7 +254,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/08/call-stack/&title=《调用堆栈》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -261,22 +264,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/08/call-stack/&title=《调用堆栈》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/08/call-stack/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-save-data》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/17/node-save-data/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《调用堆栈》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/08/call-stack/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/08/call-stack/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -299,18 +302,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/19/connect/" id="post-prev" class="post-nav-link">
+      <a href="/2019/03/15/deepCopy/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">connect</h4>
+        <h4 class="title">深拷贝</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/16/node-error-handle/" id="post-next" class="post-nav-link">
+      <a href="/2019/03/08/context/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">node-error-handle</h4>
+        <h4 class="title">执行上下文和执行栈</h4>
       </a>
     </div>
   
@@ -404,7 +407,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/08/call-stack/&title=《调用堆栈》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -414,22 +417,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/08/call-stack/&title=《调用堆栈》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/08/call-stack/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-save-data》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/17/node-save-data/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《调用堆栈》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/08/call-stack/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/08/call-stack/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -440,7 +443,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/17/node-save-data/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/03/08/call-stack/" alt="微信分享二维码">
 </div>
 
 

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深拷贝 | 不积跬步，无以至千里</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="使用JSON.stringify()和JSON.parse()实现简单的深拷贝 123456789var obj = &amp;#123;  a:1,  b:&apos;aaa&apos;,  c: &amp;#123;    d:&apos;abc&apos;,    e:[1,2,3,4]  &amp;#125;&amp;#125;  var obj1 = JSON.parse(JSON.stringify(obj))  console.log(obj1) //">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深拷贝">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/deepCopy/index.html">
+<meta property="og:site_name" content="不积跬步，无以至千里">
+<meta property="og:description" content="使用JSON.stringify()和JSON.parse()实现简单的深拷贝 123456789var obj = &amp;#123;  a:1,  b:&apos;aaa&apos;,  c: &amp;#123;    d:&apos;abc&apos;,    e:[1,2,3,4]  &amp;#125;&amp;#125;  var obj1 = JSON.parse(JSON.stringify(obj))  console.log(obj1) //">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T06:30:12.457Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深拷贝">
+<meta name="twitter:description" content="使用JSON.stringify()和JSON.parse()实现简单的深拷贝 123456789var obj = &amp;#123;  a:1,  b:&apos;aaa&apos;,  c: &amp;#123;    d:&apos;abc&apos;,    e:[1,2,3,4]  &amp;#125;&amp;#125;  var obj1 = JSON.parse(JSON.stringify(obj))  console.log(obj1) //">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xcs</h5>
+          <a href="mailto:13162927913@163.com" title="13162927913@163.com" class="mail">13162927913@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xcs-go" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5609447973/home?leftnav=1" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深拷贝</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深拷贝</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-15T14:46:50.000Z" itemprop="datePublished" class="page-time">
+  2019-03-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-deepCopy" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深拷贝</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-15 22:46:50" datetime="2019-03-15T14:46:50.000Z" itemprop="datePublished">2019-03-15</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ul>
+<li><p>使用JSON.stringify()和JSON.parse()实现简单的深拷贝</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a:<span class="number">1</span>,</span><br><span class="line">  b:<span class="string">'aaa'</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d:<span class="string">'abc'</span>,</span><br><span class="line">    e:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">  &#125;&#125;</span><br><span class="line">  <span class="keyword">var</span> obj1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">  <span class="built_in">console</span>.log(obj1) <span class="comment">// &#123; a: 1, b: 'aaa', c: &#123; d: 'abc', e: [ 1, 2, 3, 4 ] &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+<p>  以上使用JSON序列化就实现了一个简单的对象的深拷贝，但是使用JSON将一个对象序列化成文本的形式来实现深拷贝却是不那么完美的。这是因为JSON.stringify函数将一个js对象转换成文本化的JSON，然而如果遇到不能被转换成文本化的属性会被忽略掉，从而实现的拷贝是缺失的。</p>
+<ol>
+<li>拷贝的对象中存在函数时，拷贝失败<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a:<span class="number">1</span>,</span><br><span class="line">  b:<span class="string">'aaa'</span>,</span><br><span class="line">  c: &#123;</span><br><span class="line">    d:<span class="string">'abc'</span>,</span><br><span class="line">    e:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  fn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;&#125;</span><br><span class="line">  <span class="keyword">var</span> obj1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">  <span class="built_in">console</span>.log(obj1) <span class="comment">// &#123; a: 1, b: 'aaa', c: &#123; d: 'abc', e: [ 1, 2, 3, 4 ] &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在控制台中运行以上的代码，我们发现经过JSON序列化时<code>obj.fn</code>无法被序列化，导致拷贝出来的数据<code>obj1</code>丢失了<code>obj.fn</code>这个函数从而拷贝失败.</p>
+<ol start="2">
+<li>循环引用会导致拷贝失败<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a:obj1,</span><br><span class="line">  b:<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">  a:obj,</span><br><span class="line">  b:<span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1))</span><br><span class="line"><span class="built_in">console</span>.log(obj2)  <span class="comment">// &#123; a: &#123; b: 2 &#125;, b: 3 &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在上面的代码中，我们看到，obj对象的a属性引用了obj1,而obj1中的a属性同时也引用了obj。在控制台中运行上述代码发现拷贝出来的对象obj2中a的属性只有对象<code>{b:2}</code>,丢失了a属性，从而导致拷贝失败。<br>3:无法拷贝属性值为Symbol和属性值为undefined的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Symbol</span>()</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a:a,</span><br><span class="line">  b:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line"><span class="built_in">console</span>.log(obj1) <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们声明了一个变量a为Symbole。然后将其赋值给<code>obj</code>对象的<code>a</code>属性，给obj对象添加了一个属性值为<code>undefined</code>的<code>b</code>属性，然后使用JSON.stringify进行序列化，发现打印出来的是一个<code>{}</code>对象，说明序列化失败.<br>4:在数组中，不能被序列化的元素会被使用null进行填充</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,<span class="string">'a'</span>,<span class="literal">undefined</span>,<span class="string">'b'</span>,<span class="built_in">Symbol</span>()]</span><br><span class="line"><span class="keyword">const</span> arr1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(arr))</span><br><span class="line"><span class="built_in">console</span>.log(arr1) <span class="comment">// [ null, 'a', null, 'b', null ]</span></span><br></pre></td></tr></table></figure>
+<p>上面我们声明了一个数组<code>arr</code>,arr中有匿名函数，字符串，undefined以及Symbol，我们对arr进行序列化之后发现不能被序列化的元素都被使用null进行填充了，导致序列化失败。</p>
+</li>
+<li><p>遇到无法被序列化的属性我们可以重写对象的toJSON方法<br>绕过对象的某些属性无法被序列化的情况我们可以重写对象的toJSON方法来自定义被stringify的对象。在我们平时的开发中基本上每一次ajax请求都会使用JSON.stringify。而使用该方法就会把无法被序列化的属性给过滤掉。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(first,last)&#123;</span><br><span class="line">    <span class="keyword">this</span>.first = first</span><br><span class="line">    <span class="keyword">this</span>.last = last</span><br><span class="line">  &#125;</span><br><span class="line">  toJSON()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">fullName</span>: <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.first&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.last&#125;</span>`</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> Person(<span class="string">'hello'</span>, <span class="string">'world'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(person))) <span class="comment">// &#123; first: 'hello', last: 'world' &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSON.stringify的定义如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(value, replacer?, space?)</span><br><span class="line"><span class="comment">// 除了value值职位其余的参数都是可选的。</span></span><br><span class="line"><span class="comment">// replacer表示的是一个过滤函数或则一个数组包含要被stringify的属性名。如果没有定义，默认所有属性都被stringify。如果是函数的化，那么对象中的属性名和值会分别被传入进该函数中可以进行自定义。函数的返回值有以下几种情况：</span></span><br><span class="line">  <span class="comment">// 返回undefined表示忽略该属性；</span></span><br><span class="line">  <span class="comment">// 返回字符串，布尔值或则数字将会被stringify；</span></span><br><span class="line">  <span class="comment">// 返回对象将会触发递归调用知道遇到基本类型的属性；</span></span><br><span class="line">  <span class="comment">// 返回无法stringify的值将会被忽略；</span></span><br><span class="line"><span class="comment">// space可以使JSON.Stringify的输出格式更加的好看，例如可以使用tab(‘\t’)来将&#123;a:1,b:2&#125;进行分隔换行输出为以下形式</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   a:1,</span></span><br><span class="line"><span class="comment">//   b:2</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自己实现深拷贝<br>通过对JSON.stringify的分析我们知道使用JSON.stringify来实现深拷贝是存在问题的，那么在实际的项目中我们可能需要深拷贝的实现，这时候我们只能通过自己来实现深拷贝。</p>
+<ol>
+<li>首先实现以下浅拷贝<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> target = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    target[key] = obj[key]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>,<span class="attr">c</span>:&#123;<span class="attr">d</span>:<span class="string">'hello'</span>, <span class="attr">e</span>: <span class="string">'world'</span>&#125;,<span class="attr">fn</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;&#125;</span><br><span class="line"><span class="keyword">var</span> target = shallowCopy(obj)</span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'world' &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>以上我们实现了一个简单的浅拷贝，下面我们修改一下<code>target</code>的值，然后再看看obj中的值是否发生了变化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target.a = <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// &#123; a: 3, b: 2, c: &#123; d: 'hello', e: 'world' &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'world' &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们对target中的属性a做了改变，然后打印obj。我们发现obj中的属性a并没有发生变化，这是因为属性a的值是基本数据类型，下面我们再来改变一下target中的属性c的e属性。看看会发生什么变化.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target.c.e = <span class="string">'javascript'</span></span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'javascript' &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'javascript' &#125; &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>根据上面的打印结果我们发现，当修改一个浅拷贝出来的对象属性(该属性的值是一个引用类型)时，原来的对象同时也被改变了，这是因为javascript中的引用类型是存在内存中的堆中(访问是通过引用访问，内存地址)，而基本数据类型是存储在栈中。下面我们来对上面的浅拷贝函数进行一些修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, key)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">        target[key] = deepCopy(obj[key])</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        target[key] = obj[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试一下我们修改过后的深拷贝函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target1 = deepCopy(obj)</span><br><span class="line">target1.c.e = <span class="string">'javascript'</span></span><br><span class="line"><span class="built_in">console</span>.log(target1) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'javascript' &#125; &#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'world' &#125; &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>从打印的结果我们可以看出，<code>target1</code>中的引用对象被修改了值，但是<code>obj</code>中的值并没有被修改，所以我们实现了一个基本的深拷贝。下面我们看看这个深拷贝的问题：</p>
+<ol>
+<li><p>如果传入的是参数是null或者是undefined的情况下，我们返回的是什么？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target2 = deepCopy(<span class="literal">null</span>) <span class="comment">// deepCopy(undefined)</span></span><br><span class="line"><span class="built_in">console</span>.log(target2) <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>当我们传如的参数是<code>null或者undefined</code>的情况下，深拷贝出来的是一个<code>{}</code>,这不符合我们的预期，我们期望打印出来的是<code>null或者是undefined</code>。所以我们需要对传入的参数做验证.我们可以通过对象的toString方法来判断对象的类型，但是我们需要保留数组的情况，所以仍然使用typeof来判断</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">'object'</span> &amp;&amp; obj ! = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isObject(obj)) <span class="keyword">return</span> obj; <span class="comment">// 对传入的参数做数据类型验证</span></span><br><span class="line">  <span class="keyword">let</span> target = &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, key)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isObject(obj[key])) &#123;</span><br><span class="line">        target[key] = deepCopy(obj[key])</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        target[key] = obj[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>测试一下改进之后的深拷贝<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = deepCopy(<span class="literal">null</span>)</span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// null</span></span><br><span class="line"><span class="keyword">var</span> target = deepCopy(<span class="literal">undefined</span>)</span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> target = deepCopy(obj)</span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// &#123; a: 1, b: 2, c: &#123; d: 'hello', e: 'world' &#125;, fn: [Function: fn] &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>改进之后的深拷贝基本已经可以将null和undefined给过滤掉了。下面，我们考虑一下数组的情况<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isObject(obj)) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">Array</span>.isArray(obj) ? [] : &#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, key)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isObject(obj[key]))&#123;</span><br><span class="line">        target[key] = deepCopy(obj[key])</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        target[key] = obj[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当使用JSON序列化来处理循环引用的时候会报错，导致拷贝失败，所以我们在自己实现深拷贝的时候也需要考虑循环引用的问题。解决方案就是使用hash来存储已经拷贝过的对象,当检测到当前的对象已经存在于hash中的时候，直接返回hash中的对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj, hash = new WeakMap(</span>)) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isObject(obj)) <span class="keyword">return</span> obj</span><br><span class="line">  <span class="keyword">if</span> (hash.has(obj)) <span class="keyword">return</span> hash.get(obj)</span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">Array</span>.isArray(obj) ? [] : &#123;&#125;</span><br><span class="line">  hash.set(obj, target)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(obj, key)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isObject(obj[key]))&#123;</span><br><span class="line">        target[key] = deepCopy(obj[key], hash)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        target[key] = obj[key]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试一下代码</span></span><br><span class="line"><span class="keyword">let</span> object = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;</span><br><span class="line">object.b = object</span><br><span class="line"><span class="keyword">let</span> target = deepCopy(object)</span><br><span class="line"><span class="built_in">console</span>.log(target) <span class="comment">// &#123; a: 1, b: [Circular] &#125;</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-16T06:30:12.457Z" itemprop="dateUpdated">2019-03-16 14:30:12</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="xcs">
+            xcs
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/15/deepCopy/&title=《深拷贝》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/15/deepCopy/&title=《深拷贝》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/15/deepCopy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深拷贝》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/15/deepCopy/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/15/deepCopy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/17/[[prototype]]/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[[prototype]]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/08/call-stack/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">调用堆栈</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xcs &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/15/deepCopy/&title=《深拷贝》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/15/deepCopy/&title=《深拷贝》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/15/deepCopy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深拷贝》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/15/deepCopy/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/15/deepCopy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/03/15/deepCopy/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '大爷来嘛~~';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '不积跬步，无以至千里';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -14,24 +14,24 @@
     
     
     
-    <title>node-save-data | 不积跬步，无以至千里</title>
+    <title>[[prototype]] | 不积跬步，无以至千里</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+    <meta name="description" content="js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。几乎所有的对象在创建时[[prototype]]属性都会被赋予一个非空的值。 [[prototype]]查找(原型链查找)当试图访问对象的属性时，就会触发[[Get]]操作，对于默认的[[Get]]操作来说，首先是检查对象本身是否有这个属性，如果有的话就使用对象本身的这个属性，如果访问的对象的属性不存在于该对">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node-save-data">
-<meta property="og:url" content="http://yoursite.com/2018/12/17/node-save-data/index.html">
+<meta property="og:title" content="[[prototype]]">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/[[prototype]]/index.html">
 <meta property="og:site_name" content="不积跬步，无以至千里">
-<meta property="og:description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+<meta property="og:description" content="js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。几乎所有的对象在创建时[[prototype]]属性都会被赋予一个非空的值。 [[prototype]]查找(原型链查找)当试图访问对象的属性时，就会触发[[Get]]操作，对于默认的[[Get]]操作来说，首先是检查对象本身是否有这个属性，如果有的话就使用对象本身的这个属性，如果访问的对象的属性不存在于该对">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-18T15:23:17.419Z">
+<meta property="og:updated_time" content="2019-03-17T06:32:08.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node-save-data">
-<meta name="twitter:description" content="Node存储数据如何选择存储机制 程序需要存储的数据是什么 如何保证性能,数据的读写速度 数据量 如何查询数据 数据存储时间      Node中常用的存储数据的方式 无服务器的数据存储 内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失. 基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.">
+<meta name="twitter:title" content="[[prototype]]">
+<meta name="twitter:description" content="js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。几乎所有的对象在创建时[[prototype]]属性都会被赋予一个非空的值。 [[prototype]]查找(原型链查找)当试图访问对象的属性时，就会触发[[Get]]操作，对于默认的[[Get]]操作来说，首先是检查对象本身是否有这个属性，如果有的话就使用对象本身的这个属性，如果访问的对象的属性不存在于该对">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -124,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">node-save-data</div>
+        <div class="flex-col header-title ellipsis">[[prototype]]</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -146,11 +146,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">node-save-data</h1>
+        <h1 class="title">[[prototype]]</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-17T15:59:47.000Z" itemprop="datePublished" class="page-time">
-  2018-12-17
+                <time datetime="2019-03-17T05:29:47.000Z" itemprop="datePublished" class="page-time">
+  2019-03-17
 </time>
 
 
@@ -167,12 +167,12 @@
 <div class="container body-wrap">
     
 
-<article id="post-node-save-data" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-[[prototype]]" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">node-save-data</h1>
+        <h1 class="post-card-title">[[prototype]]</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-17 23:59:47" datetime="2018-12-17T15:59:47.000Z" itemprop="datePublished">2018-12-17</time>
+            <time class="post-time" title="2019-03-17 13:29:47" datetime="2019-03-17T05:29:47.000Z" itemprop="datePublished">2019-03-17</time>
 
             
 
@@ -186,30 +186,10 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <ul>
-<li>Node存储数据<br>如何选择存储机制<ol>
-<li>程序需要存储的数据是什么</li>
-<li>如何保证性能,数据的读写速度</li>
-<li>数据量</li>
-<li>如何查询数据</li>
-<li>数据存储时间</li>
-</ol>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Node中常用的存储数据的方式<ul>
-<li>无服务器的数据存储<ol>
-<li>内存存储: 内存存储的理想用途是存放少量经常使用的数据;其读写速度快，但是在服务器重启之后数据便会丢失.</li>
-<li>基于文件的存储: 用文件系统存放数据,可以使用它来做数据持久化，数据在程序和服务器重启之后依然存在.</li>
-</ol>
-</li>
-<li>关系型数据库<br>关系型数据库可以存储复杂的信息，并且查询起来比较容易<ol>
-<li>mySql</li>
-<li>PostgreSQl</li>
-</ol>
-</li>
-</ul>
-</li>
+<li>js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于其他对象的引用。几乎所有的对象在创建时[[prototype]]属性都会被赋予一个非空的值。</li>
+<li>[[prototype]]查找(原型链查找)<br>当试图访问对象的属性时，就会触发[[Get]]操作，对于默认的[[Get]]操作来说，首先是检查对象本身是否有这个属性，如果有的话就使用对象本身的这个属性，如果访问的对象的属性不存在于该对象中，那么就在[[prototype]]链中查找，直到查找完整条[[prototype]]链，如果还是没有找到的话，那么将会返回undefined。<br>当使用for…in遍历对象时和查找[[prototype]]链类似，任何可以通过原型链访问的并且可以被enumerable的属性都会被枚举。使用in操作符来检查属性在对象中是否存在时，同样会查找对象的整条原型链(无论属性是否可以被枚举)</li>
+<li>[[prototype]]的最终会指向Object.prototype<br>所有普通的[[prototype]]链最终都会指向内置的Object.prototype。</li>
+<li>new<br>当在普通的函数调用前面加上new关键字之后，就会把这个函数调用变成一个”构造函数调用”。实际上，new会劫持所有普通函数并用构造对象的形式来调用它。所以在javascript中对于”构造函数”最准确的解释是，所有带new的函数调用。函数不是构造函数，但是当且仅当使用new时，函数会变成”构造函数调用”。</li>
 </ul>
 
         </div>
@@ -219,7 +199,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-18T15:23:17.419Z" itemprop="dateUpdated">2018-12-18 23:23:17</time>
+    最后更新时间：<time datetime="2019-03-17T06:32:08.880Z" itemprop="dateUpdated">2019-03-17 14:32:08</time>
 </span><br>
 
 
@@ -251,7 +231,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/17/[[prototype]]/&title=《[[prototype]]》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -261,22 +241,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/17/[[prototype]]/&title=《[[prototype]]》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/17/[[prototype]]/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-save-data》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/17/node-save-data/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[[prototype]]》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/17/[[prototype]]/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/17/[[prototype]]/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -299,18 +279,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/12/19/connect/" id="post-prev" class="post-nav-link">
+      <a href="/2019/03/25/scope/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">connect</h4>
+        <h4 class="title">作用域</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/16/node-error-handle/" id="post-next" class="post-nav-link">
+      <a href="/2019/03/15/deepCopy/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">node-error-handle</h4>
+        <h4 class="title">深拷贝</h4>
       </a>
     </div>
   
@@ -404,7 +384,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/03/17/[[prototype]]/&title=《[[prototype]]》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -414,22 +394,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/12/17/node-save-data/&title=《node-save-data》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/03/17/[[prototype]]/&title=《[[prototype]]》 — 不积跬步，无以至千里&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/03/17/[[prototype]]/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-save-data》 — 不积跬步，无以至千里&url=http://yoursite.com/2018/12/17/node-save-data/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[[prototype]]》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/03/17/[[prototype]]/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/12/17/node-save-data/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/03/17/[[prototype]]/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -440,7 +420,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/12/17/node-save-data/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/03/17/[[prototype]]/" alt="微信分享二维码">
 </div>
 
 
