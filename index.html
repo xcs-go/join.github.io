@@ -126,7 +126,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,6 +158,45 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-this" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-26 23:41:12" datetime="2019-03-26T15:41:12.000Z" itemprop="datePublished">2019-03-26</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/26/this/">this</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+关于thisthis被自动定义在所有函数的作用域中。this是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调用时的各种条件。this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。当一个函数被调用时，会创建一个活动记录(也称为执行上下文)。这个记录会包含函数在哪里被调用(调用栈)、函数的调用方式、传入的参数等信息。this就是这个记录的一个属性，会在函数执行的过...
+    
+
+        <a href="/2019/03/26/this/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-scope" class="article-card article-type-post" itemprop="blogPost">
@@ -196,7 +235,7 @@
     
 
         <a href="/2019/03/25/scope/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -236,7 +275,7 @@ js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于�
     
 
         <a href="/2019/03/17/[[prototype]]/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -276,7 +315,7 @@ js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于�
     
 
         <a href="/2019/03/15/deepCopy/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -316,7 +355,7 @@ js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于�
     
 
         <a href="/2019/03/08/call-stack/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -354,7 +393,7 @@ js中的对象有一个特殊的[[prototype]]内置属性，其实就是对于�
     
 
         <a href="/2019/03/08/context/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -394,7 +433,7 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
     
 
         <a href="/2019/01/03/commonJS-AMD-CMD-ES6/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -437,7 +476,7 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
     
 
         <a href="/2019/01/02/isEmptyObject/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -478,7 +517,7 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
     
 
         <a href="/2018/12/29/observer-pattern/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -524,49 +563,7 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
     
 
         <a href="/2018/12/29/singleton-pattern/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-hoc" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-26 23:22:48" datetime="2018-12-26T15:22:48.000Z" itemprop="datePublished">2018-12-26</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/26/hoc/">高阶组件</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-高阶组件(HOC)高阶组件公式
-1const HOC = Component =&gt; EnhancedComponent
-从上面我们可以看出高阶组件其实就是函数，它接受组件作为参数，对组件进行增强后返回。一个简单的高阶组件的例子如下，给组件添加一个className prop
-123const withClassName = Component =&gt; props =&gt;(  ...
-    
-
-        <a href="/2018/12/26/hoc/" class="post-more waves-effect waves-button">
-            阅读全文…
+            阅读全文
         </a>
     </div>
     
@@ -601,7 +598,7 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
 
         <p>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

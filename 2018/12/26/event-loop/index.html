@@ -30,7 +30,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/9BDAA230-067C-4B39-9A76-9EDB33B9BCE4.png">
 <meta property="og:image" content="http://yoursite.com/images/07387385-E157-43F3-B31A-0C4EE7543FB5.png">
-<meta property="og:updated_time" content="2018-12-26T15:25:09.403Z">
+<meta property="og:image" content="http://yoursite.com/images/WechatIMG396.jpeg">
+<meta property="og:updated_time" content="2019-03-29T09:36:05.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件循环">
 <meta name="twitter:description" content="事件轮询(event loop) js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以随着时间的推移执行程序中的多个代码块,这个就称为事件轮询js引擎对时间没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件(js代码的执行)“">
@@ -133,7 +134,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -199,7 +200,17 @@
 <p>js自身并没有任何内建存在的概念.js引擎除了在某个时刻被要求执行程序的代码块之外，没有做任何其他的事情。<br>js引擎运行在宿主环境中。JavaScript线程在每次调用JS引擎的时候，可以<code>随着时间的推移</code>执行程序中的多个代码块,这个就称为<strong>事件轮询</strong><br>js引擎对<code>时间</code>没有天生的感觉，而是一个任意js代码片段的按需执行环境。是它周围的环境在不停地安排”事件<code>(js代码的执行)</code>“</p>
 </blockquote>
 <ul>
-<li><p>单线程<br>前面提到了javascript线程。下面简单理解一下js的单线程<br>js语言的一大特点就是单线程，也就是说同一时间只能处理一件事情。这个是和JavaScript的作用有关系的。JavaScript的主要用途是用来和用户进行交互，操作DOM。例如某个操作是删除一个DOM节点，同时另一个操作是在这个DOM上添加内容，这个时候浏览器就不知道该执行哪个操作。所以这个决定了js只能是单线程的语言，同一个时间只能处理一件事情。</p>
+<li><p>单线程<br>前面提到了javascript线程。下面简单理解一下js的单线程<br>js语言的一大特点就是单线程，也就是说同一时间只能处理一件事情。这个是和JavaScript的作用有关系的。JavaScript的主要用途是用来和用户进行交互，操作DOM。例如某个操作是删除一个DOM节点，同时另一个操作是在这个DOM上添加内容，这个时候浏览器就不知道该执行哪个操作。所以这个决定了js只能是单线程的语言，同一个时间只能处理一件事情。<br>单线程意味着，js代码在执行的任何时候，都只有一个主线程来处理所有的任务。</p>
+</li>
+<li><p>浏览器下的js引擎的事件循环机制</p>
+<ol>
+<li>执行栈和事件队列<br>当js代码在编译阶段的时候会进行词法分析，会将不同的变量存放在内存中的不同环境中：堆(head)和栈(stack)来区分是对象类型还是基础数据类型(对象复合类型是存放在内存的堆中，而基础数据类型和对象复合类型的指针是存放在栈中)。<ol>
+<li>执行栈<br>当一个js的函数被调用时，会在当前函数内创建一个执行上下文，该执行上下文中存放着这个方法的私有作用域，上层作用域的指向，方法的参数，这个作用域中定义的变量以及这个作用域的this对象。而当一系列方法被依次调用的时候，这些方法被排在一个单独的地方，这个地方就是执行栈。另外在js代码第一次执行的时候会向执行栈中加入一个全局的执行栈。</li>
+<li>事件队列<br>以上说的在执行栈中运行的函数是同步运行的，js的一大特点就是非阻塞的，而实现非阻塞就是依赖于事件队列。js引擎遇到一个异步事件之后并不会一直等待该异步事件的返回结果，而是将这个异步事件挂起，继续执行执行栈中的其他任务，当一个异步事件返回结果后，js会将这个事件加入与当前执行栈不同的另一个队列，该队列就是我们叫的事件队列。被放入事件队列的回调函数并不会立即执行，而是等待当前执行栈中的所有任务都执行完毕，主线程处于闲置状态时，主线程会去查找事件队列中是否有任务，如果有那么主线程会从中取出排在第一位的事件，并把这个事件对应的回调放入执行栈中，然后执行其中的同步代码…</li>
+</ol>
+</li>
+<li>事件循环<br>以上事件队列中反复的执行过程会形成一个无限的循环，该循环就被称之为“事件轮询(event loop)见下图<code>第二张图</code>”</li>
+</ol>
 </li>
 <li><p>理解事件轮询</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件轮询类似一个队列的数组，先进先出</span></span><br><span class="line"><span class="keyword">const</span> eventLoop = []</span><br><span class="line"><span class="keyword">let</span> event</span><br><span class="line"><span class="comment">// 永远执行</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// 执行一个tick</span></span><br><span class="line">  <span class="keyword">if</span> (eventLoop.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 从队列中取出下一个事件</span></span><br><span class="line">    event = eventLoop.shift()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行取出的事件</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      event()</span><br><span class="line">    &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="built_in">Error</span>(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -214,6 +225,38 @@
 <li>一种是异步任务:异步任务指的是，不进入主线程，而是进入任务队列(task queue)的任务，只有任务队列<code>通知主线程</code>，某个异步任务可以进入主线程执行了，该异步任务才会从任务队列移到主线程中等待被执行。如下图。<br><img src="/images/07387385-E157-43F3-B31A-0C4EE7543FB5.png" alt=""></li>
 </ol>
 </li>
+<li><p>宏任务(macro task)和微任务(micro task)<br>异步任务分为宏任务和微任何，常见的宏任务有：<code>setInterval, setTimeout</code>;常见的微任务有：<code>new Promise(),new MutaionObserver()</code>。<br>在一个事件循环中，异步事件的回调函数会被放入到任务队列中。但是，根据这个异步事件类型，这个事件实际上会被放入到对应的宏任务队列或者微任务队列中去。并且在当前执行栈为空的时候，主线程会去查看微任务队列中是否有事件存在，如果有事件存在，那么依次执行微任务队列中的事件回调函数，直到微任务队列为空，然后再去宏任务队列中取出最前面的一个事件，把对应的回调函数加入到当前的执行栈中；如果微任务队列中的事件已经被执行完毕或者不存在事件，那么就会去宏任务队列中取出最前面的事件并且把其放入到执行栈中执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例如</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>) <span class="comment">// setTimeout为宏任务</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>) <span class="comment">// promise会立即执行</span></span><br><span class="line">  resolve(<span class="number">3</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value) <span class="comment">// promise为微任务</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 输出为: 2-&gt;3-&gt;1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>node中的事件循环<br>Node中的事件循环的实现依赖的是libuv引擎，当chrom v8引擎将js的代码分析后调用对应的node api,而这些api最后则有libuv引擎驱动，执行对应的任务，并把不同的事件放在不同的队列中等待主线程执行，所以node中的事件循环存在于libuv引擎中。</p>
+<ul>
+<li>node中的事件循环模型如下图所示<br><img src="/images/WechatIMG396.jpeg" alt=""></li>
+<li>事件循环阶段讲解<br>外部输入数据-&gt;轮询阶段(poll)-&gt;检查阶段(check)-&gt;关闭事件回调阶段(close callback)-&gt;定时器检测阶段(timer)-&gt;I/O事件回调阶段(I/O callbacks)-&gt;闲置阶段(idle, prepare)-&gt;轮询阶段…依次循环</li>
+<li>各个阶段对应的功能如下所示</li>
+</ul>
+<ol>
+<li>timers: 这个阶段执行定时器队列中的回调(setTimeout, setInterval)。</li>
+<li>I/O callbacks: 该阶段执行除了close, 定时器(timers)和setImmediate之外的所有回调函数。</li>
+<li>idle, prepare: 该阶段只在内部使用。</li>
+<li>poll: 等待新的I/O事件，node在一些特殊情况下会阻塞在这里。</li>
+<li>check: setImmediate()的回调函数会在这个阶段执行。</li>
+<li>close callbacks: close事件的回调。</li>
+</ol>
+<ul>
+<li>循环阶段详解<ul>
+<li>poll<br>循环首先进入的是pull阶段。poll阶段做的事情如下：先查看poll queue中是否有事件，有任务就按照队列的执行顺序(先进先出)依次执行回调。当queue为空时，会检查是否有setImmediate函数的回调，如果有的话就进入到check阶段执行setImmediate的回调函数，同时也会检查是否有到期的timer,如果有的话就将到期的timer的回调函数按照顺序放入到timer queue中，之后循环会进入timer阶段执行queue中的回调函数。如果两个都是空的，那么事件循环会在poll阶段停留，直到有一个I/O事件返回，循环会进入到I/O callback阶段立即执行这个事件的callback.<br><code>注意⚠️</code>停止poll queue中的回调无限执行的两种情况：<ol>
+<li>所有的回调执行完毕</li>
+<li>执行树超过了node的限制</li>
+</ol>
+</li>
+<li>check<br>check是用来专门来执行setImmediate()方法的回调，当poll阶段进入空闲状态，并且setImmediate queue中有callback时，事件循环进入到这个阶段.</li>
+<li>close<br>当一个socket连接或者一个handle被突然关闭时（例如调用了socket.destroy()方法），close事件会被发送到这个阶段执行回调。否则事件会用process.nextTick（）方法发送出去。</li>
+<li>timer<br>timer阶段会以先进先出的队列方式来执行所有到期的timer加入到timer队列里的callback. 一个timer callback指得是一个通过setTimeout或者setInterval函数设置的回调函数。</li>
+<li>I/O callback阶段<br>如上文所言，这个阶段主要执行大部分I/O事件的回调，包括一些为操作系统执行的回调。例如一个TCP连接生错误时，系统需要执行回调来获得这个错误的报告。</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -223,7 +266,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-26T15:25:09.403Z" itemprop="dateUpdated">2018-12-26 23:25:09</time>
+    Last updated: <time datetime="2019-03-29T09:36:05.495Z" itemprop="dateUpdated">2019-03-29 17:36:05</time>
 </span><br>
 
 
@@ -386,7 +429,7 @@
 
         <p>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
