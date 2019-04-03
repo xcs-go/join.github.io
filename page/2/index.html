@@ -160,6 +160,49 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-isEmptyObject" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-01-02 11:53:20" datetime="2019-01-02T03:53:20.000Z" itemprop="datePublished">2019-01-02</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/01/02/isEmptyObject/">判断一个对象是否是空对象</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+在日常工作中，有时候需要判断一个对象是否是空对象。下面整理了判断对象是否是空对象的几种常见方法
+
+
+使用for…in 循环来判断对象是否为空。如果对象是空对象，那么for…in循环就不会遍历出属性
+123456const isEmptyObject = obj =&gt; &#123;  for (let name in obj) &#123;    return false;  &#12...
+    
+
+        <a href="/2019/01/02/isEmptyObject/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-observer-pattern" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -540,53 +583,6 @@ Node错误处理Node在发生错误的时候，有个常规的处理方式。可
     
 
         <a href="/2018/12/16/node-error-handle/" class="post-more waves-effect waves-button">
-            阅读全文
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-node-async" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-15 14:41:28" datetime="2018-12-15T06:41:28.000Z" itemprop="datePublished">2018-12-15</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/15/node-async/">node-async</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-Node处理响应逻辑管理方式:回调和事件监听
-
-
-
-回调处理一次性事件回调是一个函数，它被当作参数传递给异步函数，它描述了异步操作完成之后要做什么
-
-
-
-用事件发射器处理重复性事件事件发射器会触发事件，并且在那些事件被触发时能处理它们。事件是通过监听器进行处理的。监听器是跟事件相关的，当有一个事件出现时就会触发注册事件的回调函数。如下：1234567const net = require(...
-    
-
-        <a href="/2018/12/15/node-async/" class="post-more waves-effect waves-button">
             阅读全文
         </a>
     </div>
