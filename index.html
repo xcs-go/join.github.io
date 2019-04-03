@@ -160,6 +160,46 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-bind" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-31 15:37:48" datetime="2019-03-31T07:37:48.000Z" itemprop="datePublished">2019-03-31</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/31/bind/">bind原理及模拟实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+bind方法会创建一个新函数，当这个函数被调用时，它的this值是传递给bind()的第一个参数，传入bind方法的第二个参数以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。bind返回的绑定函数也能使用new操作符创建对象；这种行为就像把原函数当成构造器，提供的this值被忽略，同时调用时的参数被提供给模拟函数。
+bind和apply/call的区别bin...
+    
+
+        <a href="/2019/03/31/bind/" class="post-more waves-effect waves-button">
+            阅读全文
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-call" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -516,47 +556,6 @@ CommonJSNode.js提供了四个环境变量来对模块化的支持，分别是:m
     
 
         <a href="/2019/01/02/isEmptyObject/" class="post-more waves-effect waves-button">
-            阅读全文
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-observer-pattern" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-12-29 14:46:15" datetime="2018-12-29T06:46:15.000Z" itemprop="datePublished">2018-12-29</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/12/29/observer-pattern/">观察着模式</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-观察者模式
-
-
-    
-
-        <a href="/2018/12/29/observer-pattern/" class="post-more waves-effect waves-button">
             阅读全文
         </a>
     </div>

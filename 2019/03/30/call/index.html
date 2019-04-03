@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="不积跬步，无以至千里">
 <meta property="og:description" content="使用数组的slice方法将类数组转换为数组原理：slice将类数组通过下标操作放进了array里面 12345678910111213141516171819202122232425262728Array.prototype.slice = function(begin, end)&amp;#123;  end = (typeof end != &apos;undefined&apos;) ? end :this.leng">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-29T17:52:27.039Z">
+<meta property="og:updated_time" content="2019-03-31T07:36:41.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call &amp;&amp; apply实现">
 <meta name="twitter:description" content="使用数组的slice方法将类数组转换为数组原理：slice将类数组通过下标操作放进了array里面 12345678910111213141516171819202122232425262728Array.prototype.slice = function(begin, end)&amp;#123;  end = (typeof end != &apos;undefined&apos;) ? end :this.leng">
@@ -196,7 +196,7 @@
 <li><p>删除函数: delete a.fn</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 获取调用call的函数,用this来实现</span></span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="comment">// 执行函数</span></span><br><span class="line">  context.fn();</span><br><span class="line">  <span class="comment">// 删除函数</span></span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的函数中实现了基本的call方法，但是被执行的方法fn不能接受参数，下面进行改进。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> args = [];</span><br><span class="line">  <span class="comment">// 去除第一个指定this的参数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++)&#123;</span><br><span class="line">    argus.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+ args +<span class="string">')'</span>);</span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">var</span> args = [];</span><br><span class="line">  <span class="comment">// 去除第一个指定this的参数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++)&#123;</span><br><span class="line">    argus.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+ args +<span class="string">')'</span>); <span class="comment">// 需要将args中的元素一个个传递给fn，使用eval方法来实现。</span></span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的实现还需要注意以下三点:</p>
 </li>
 <li>this的值可以传入为null或者undefined，此时采用的是默认绑定，指向的是全局对象，在浏览器中指向的是window对象</li>
@@ -228,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-03-29T17:52:27.039Z" itemprop="dateUpdated">2019-03-30 01:52:27</time>
+    Last updated: <time datetime="2019-03-31T07:36:41.942Z" itemprop="dateUpdated">2019-03-31 15:36:41</time>
 </span><br>
 
 
@@ -305,7 +305,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/31/bind/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">bind原理及模拟实现</h4>
+      </a>
+    </div>
   
 
   
