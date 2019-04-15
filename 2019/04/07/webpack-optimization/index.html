@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>webpack性能优化 | 不积跬步，无以至千里</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="以下的性能优化是基于webpack3.x的版本  缩小文件的搜索范围webpack在启动后会从配置的entry出发，解析出文件中的导入语句，再递归解析。在遇到导入语句时，webpack会做以下的事情  按照导入语句寻找对应的要导入的文件。（会根据文件的路径查找） 根据需要找到的文件的后缀，使用配置中的Loader去处理文件，将其转换为webpack需要的形式。例如es6使用babel-loade">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack性能优化">
+<meta property="og:url" content="http://yoursite.com/2019/04/07/webpack-optimization/index.html">
+<meta property="og:site_name" content="不积跬步，无以至千里">
+<meta property="og:description" content="以下的性能优化是基于webpack3.x的版本  缩小文件的搜索范围webpack在启动后会从配置的entry出发，解析出文件中的导入语句，再递归解析。在遇到导入语句时，webpack会做以下的事情  按照导入语句寻找对应的要导入的文件。（会根据文件的路径查找） 根据需要找到的文件的后缀，使用配置中的Loader去处理文件，将其转换为webpack需要的形式。例如es6使用babel-loade">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-08T16:25:32.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack性能优化">
+<meta name="twitter:description" content="以下的性能优化是基于webpack3.x的版本  缩小文件的搜索范围webpack在启动后会从配置的entry出发，解析出文件中的导入语句，再递归解析。在遇到导入语句时，webpack会做以下的事情  按照导入语句寻找对应的要导入的文件。（会根据文件的路径查找） 根据需要找到的文件的后缀，使用配置中的Loader去处理文件，将其转换为webpack需要的形式。例如es6使用babel-loade">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xcs</h5>
+          <a href="mailto:13162927913@163.com" title="13162927913@163.com" class="mail">13162927913@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xcs-go" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5609447973/home?leftnav=1" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack性能优化</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">webpack性能优化</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-07T14:01:55.000Z" itemprop="datePublished" class="page-time">
+  2019-04-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-webpack-optimization" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack性能优化</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-07 22:01:55" datetime="2019-04-07T14:01:55.000Z" itemprop="datePublished">2019-04-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ul>
+<li><p>以下的性能优化是基于webpack3.x的版本</p>
+</li>
+<li><p>缩小文件的搜索范围<br>webpack在启动后会从配置的entry出发，解析出文件中的导入语句，再递归解析。在遇到导入语句时，webpack会做以下的事情</p>
+<ul>
+<li>按照导入语句寻找对应的要导入的文件。（会根据文件的路径查找）</li>
+<li>根据需要找到的文件的后缀，使用配置中的Loader去处理文件，将其转换为webpack需要的形式。例如es6使用babel-loader去处理，而css会使用css-loader和style-loader去处理.<br>上面是缩小文件范围的一个基本概念。下面会详细介绍如何才能缩小文件的搜索范围</li>
+</ul>
+<ol>
+<li><p>优化Loader配置</p>
+<ul>
+<li>尽量减少文件被Loader处理，因为Loader对文件的转换是非常耗时的。<br>可以通过使用include去命中只有哪些文件需要被处理，通过exclude配置来排除不需要处理的文件。适当的调整项目的目录，以方便在配置Loader时通过include缩小命中的范围<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.j(s|xs)$/</span>,</span><br><span class="line">        use: [<span class="string">'babel-loader?cacheDirectory'</span>],</span><br><span class="line">        include: path.resolve(__dirname, <span class="string">'src'</span>),</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优化resolve.module配置<br>resolve.module用于配置去哪些目录下寻找第三方模块。其默认值是[‘node_modules’],意思就是说先在当前目录的./node_modules目录下去找我们想要的模块，如果没有的话那么就去上一级目录../node_modules中找，依此类推。如果我们在项目中安装的第三方模块都是在根目录下面的话，那么就可以直接指定第三方模块的绝对路径，以此来减少模块的查找.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    modules: [path.resolve(__dirname, <span class="string">'node_modules'</span>)]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化resolve.maniFields配置<br>resolve.maniFields的作用是配置第三方模块使用哪个入口文件。resolve.maniFields用于配置采用哪个字段作为入口文件的描述。可以同时存在多个字段描述入口文件的原因是，某些模块可以同时用于多个环境中，针对不同的环境需要使用不同的代码。所以在其package.json文件中就会有两个入口文件描述字段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"browser"</span>: <span class="string">"......browser.js"</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"....npm-node.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>resolve.maniFields的默认值和当前的target配置有关系，其对应的关系如下所示</p>
+<ul>
+<li>当target为web或者webworker时，值是[“browser”, “module”, “main”]。</li>
+<li>当target为其他情况时，值是[“module”, “main”].<br>所以为了减少搜索步骤，当在明确知道第三方模块的入口文件描述时，可以将它设置得尽量少，由于大多数的第三方模块都采用main字段去描述入口文件的位置，所以可以按照以下的方式进行配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    maniFields: [<span class="string">'main'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优化resolve.alias配置取别名<br>resolve.alias配置项通过别名来将原导入路径映射成一个新的导入路径,例如在导入react时，webpack会从入口文件./node_modules/react/react.js开始递归解析所依赖的所有文件，这是非常耗时的行为，通过配置resolve.alias，可以让webpack在处理react库时，直接使用单独、完整的react.min.js文件，从而跳过递归解析等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">'react'</span>: path.resolve(__dirname, <span class="string">'./node_modules/react/dist/react.min.js'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是使用该方法可能会影响到使用Tree-Sharking去除无效代码的优化。对于一些工具类的库如(lodash)可能就不适合采用别名的方式来进行优化，因为这样可能会包含很多无效的代码在打包过后。</p>
+</li>
+<li><p>优化resolve.extenstions配置<br>导入文件没带后缀时，webpack会在自动带上后缀后去尝试询问文件是否存在。resolve.extensions配置用于在尝试匹配过程中的后缀列表。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extensions: [<span class="string">'.js'</span>, <span class="string">'.json'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的配置中如果文件导入不带后缀名的是时候，首先会去查找.js的文件。如果不存在那么就会去查找.json后缀结尾的文件。如果都找不到的话，那么就抛出错误。如果extensions的列表越长，就会造成尝试的次数越多，所以resolve.extensions的配置也会影响到构建的性能。所以在配置resolve.extensions时应该遵循以下的内容</p>
+<ul>
+<li>后缀尝试列表要尽可能小。</li>
+<li>出现频率高的文件后缀优先放在最前面，以便为了更快的退出寻找内容。</li>
+<li>在源码导入文件时，尽量带上后缀名，避免寻找过程。</li>
+</ul>
+</li>
+<li>优化module.noParse配置<br>module.noParse配置项可以让webpack忽略对部分没有采用模块化的文件递归解析处理，这样做的好处是能提高构建性能。</li>
+</ol>
+</li>
+<li><p>使用ParallelUglifyPlugin<br>在使用webpack构建出用于发布的代码时，会采用压缩这个流程。最常见的是采用UglifyJS,并且webpack也内置了该插件。在前端压缩代码时，会将代码解析成用Object抽象表示的AST语法树，再去应用各种规则分析和处理AST,所以导致这个过程的计算量巨大，耗时非常多。ParallelUglifyPlugin采用了多个子进程，将对多个文件的压缩工作分配给多个子进程去完成，每个子进程内部还是通过UglifyJS去压缩代码，但是确实并行执行的，所以会更快的完成对多个文件的压缩。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> ParallelUglifyPlugin(&#123;</span><br><span class="line">      <span class="comment">// 传递给UglifyJS的参数</span></span><br><span class="line">      uglifyJS: &#123;</span><br><span class="line">        output: &#123;</span><br><span class="line">          beatuify: <span class="literal">false</span>, <span class="comment">// 紧凑输出</span></span><br><span class="line">          comments: <span class="literal">false</span> <span class="comment">// 删除注释</span></span><br><span class="line">        &#125;,</span><br><span class="line">        compress: &#123;</span><br><span class="line">          warnings: <span class="literal">false</span>,</span><br><span class="line">          drop_console: <span class="literal">true</span>, <span class="comment">// 删除所有的console语句</span></span><br><span class="line">          collapse_vars: trus, <span class="comment">// 内嵌已定义但是只是用到一次的变量</span></span><br><span class="line">          reduce_vars: <span class="literal">true</span> <span class="comment">// 提取出现多次但是没有定义成变量去引用的静态值</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用自动刷新<br>利用自动化的手段，在监听到本地源码文件发生变化时，自动重新构建出可运行的代码后再控制浏览器刷新。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  watch: <span class="literal">true</span>, <span class="comment">// 开启文件监听</span></span><br><span class="line">  watchOptions: &#123;</span><br><span class="line">    ignored: <span class="string">'/node_modules/'</span>, <span class="comment">// 忽略node_modules中的第三方模块监听</span></span><br><span class="line">    aggregateTimeout: <span class="number">400</span>,<span class="comment">// 截流，监听文件变化之后400ms再去执行更新动作</span></span><br><span class="line">    poll: <span class="number">1000</span> <span class="comment">// 默认每秒询问1000次</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>文件监听<br>在webpack中监听一个文件发生变化的原理，是定时获取这个文件的最后编辑时间，每次都存下最新的最后编辑时间，如果发现当前获取的和最后一次保存的最后编辑时间不一致，就认为该文件发生了变化。当某个文件发生变化时，并不会立刻告诉监听者，而是先缓存起来，收集一段时间的变化后，再一次性告诉监听者。</li>
+<li>优化文件监听的性能<ul>
+<li>排除node_modules中的文件监听，因为node_modules下的文件是不太可能会发生变化的。</li>
+<li>watchOptions.aggregateTimeout的值越大性能越好，这样会降低构建的频率。</li>
+<li>watchOptions.poll的值越小越好，这样会降低检查的频率。</li>
+</ul>
+</li>
+<li>自动刷新浏览器<br> 文件变化之后就需要刷新浏览器，webpack-dev-server模块负责刷新浏览器，<br> 浏览器自动刷新原理</li>
+</ol>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-08T16:25:32.257Z" itemprop="dateUpdated">2019-04-09 00:25:32</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="xcs">
+            xcs
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/07/webpack-optimization/&title=《webpack性能优化》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/07/webpack-optimization/&title=《webpack性能优化》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/07/webpack-optimization/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack性能优化》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/04/07/webpack-optimization/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/07/webpack-optimization/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/10/promise/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">promise的实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/03/add-infinity/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">实现无限累加f(1)(2) = 3; f(1)(2)(3) = 6, ...</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xcs &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/04/07/webpack-optimization/&title=《webpack性能优化》 — 不积跬步，无以至千里&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/04/07/webpack-optimization/&title=《webpack性能优化》 — 不积跬步，无以至千里&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/04/07/webpack-optimization/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack性能优化》 — 不积跬步，无以至千里&url=http://yoursite.com/2019/04/07/webpack-optimization/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/04/07/webpack-optimization/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/04/07/webpack-optimization/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '大爷来嘛~~';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '不积跬步，无以至千里';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
